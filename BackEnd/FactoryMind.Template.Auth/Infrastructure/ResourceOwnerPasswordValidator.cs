@@ -1,5 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using FactoryMind.Template.Data;
+using FactoryMind.Template.Data.Entities;
 using FactoryMind.Template.Data.Extensions;
 using FactoryMind.Template.Data.Specifications;
 using IdentityServer4.Models;

@@ -1,0 +1,198 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Finservice",
+		"_postman_id": "60f6cd40-fc7e-419e-af5b-909ac419b1b4",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"url": "http://localhost:8080/connect/token\n",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					},
+					{
+						"key": "",
+						"value": "",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "paperino",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "paperino",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "ro.client",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "secret",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "api1",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh token",
+			"request": {
+				"url": "http://localhost:5000/connect/token\n",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					},
+					{
+						"key": "",
+						"value": "",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "ro.client",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "secret",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "refresh_token",
+							"value": "ffe4986532bf85e51edfe46b3d98428f18c7969e98a7384428aae3cc7908fc8e",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Revoke Token",
+			"request": {
+				"url": "http://localhost:5000/connect/revocation\n",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					},
+					{
+						"key": "",
+						"value": "",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "ro.client",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "secret",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "token",
+							"value": "495465afe04bb8d2a0990fedac9cb3960e347aa068713eec5886cdff6888f66d",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "token_type_hint",
+							"value": "refresh_token",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get all dossiers",
+			"request": {
+				"url": "http://localhost:8080/api/dossiers",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImQxYjlhZTM5M2QyMDQwNDYzNTNjOTcxNDllMGQ0ODM5IiwidHlwIjoiSldUIn0.eyJuYmYiOjE1MjA5MzkzMTEsImV4cCI6MTUyMDk0MjkxMSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwIiwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9yZXNvdXJjZXMiLCJhcGkxIl0sImNsaWVudF9pZCI6InJvLmNsaWVudCIsInN1YiI6ImY0YWYwZjRlLWU1MjEtNGE4My05NTY5LWIzYzljZTYxYzg1NiIsImF1dGhfdGltZSI6MTUyMDkzOTMxMCwiaWRwIjoibG9jYWwiLCJ1aWQiOiJmNGFmMGY0ZS1lNTIxLTRhODMtOTU2OS1iM2M5Y2U2MWM4NTYiLCJ1ciI6IjAiLCJjdWQiOiJ0OTk5OTkiLCJjb2QiOiIxIiwic2NvcGUiOlsiYXBpMSJdLCJhbXIiOlsicGFzc3dvcmQiXX0.T3SDmB02YTgJz5mS4kJtsKT8E9DqmkmhHJzRz3LXnALwzL5cbVlgba4_3KHJNHkxETL-cMbanHCtwR7pn0sVd5SRRuvu7OgC6UIldTCSzc9T7YIHFVWbOCuroPxSe0ulehwx-qtDT3ZL9TKEUnA3wsG4VKZ5MS1fsR69Qhm4ae5ysZN3dhNxtYQaz97tv7WyDEZJpqHafmBS0BuLR-P_uVgeXFUDlsh_ASRLdALI5pZ9lgoaSniejwPzalWccqysQvBMTAijNnH168SGd-PtCzPCAjdrVwQhYC0vWLSJ-uECzjboUe8b_gpOcUgx8CtF90ySE3jP0Zyc1Od1cgoDcw",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"test\",\n\t\"price\" : 1\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

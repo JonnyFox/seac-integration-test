@@ -8,5 +8,6 @@ namespace FactoryMind.Template.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<UserProduct> UserProducts { get; set; }
+        public DbSet<EmployeeIncome> EmployeeIncome { get; set; }
     }
 }
