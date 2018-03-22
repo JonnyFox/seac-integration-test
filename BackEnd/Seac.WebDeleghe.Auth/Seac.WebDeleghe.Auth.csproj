@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IdentityServer4" Version="2.1.2" />
+    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="2.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Seac.WebDeleghe.Business\Seac.WebDeleghe.Business.csproj" />
+    <ProjectReference Include="..\Seac.WebDeleghe.Core\Seac.WebDeleghe.Core.csproj" />
+    <ProjectReference Include="..\Seac.WebDeleghe.Data\Seac.WebDeleghe.Data.csproj" />
+  </ItemGroup>
+
+</Project>

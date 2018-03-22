@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Seac.WebDeleghe.Core\Seac.WebDeleghe.Core.csproj" />
+    <ProjectReference Include="..\Seac.WebDeleghe.Data\Seac.WebDeleghe.Data.csproj" />
+    <ProjectReference Include="..\Seac.WebDeleghe.Domain\Seac.WebDeleghe.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+</Project>
