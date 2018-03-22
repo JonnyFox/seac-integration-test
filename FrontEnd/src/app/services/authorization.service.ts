@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BaseHttpService, HttpOptions } from './http.service';
+import { BaseHttpService, HttpOptions } from './base-http.service';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 
 @Injectable()

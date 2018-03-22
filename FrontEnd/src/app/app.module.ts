@@ -4,9 +4,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { AppComponent } from './app.component';
 import { GridComponent } from './grid/grid.component';
-import { BaseHttpService } from './services/http.service'
+import { BaseHttpService } from './services/base-http.service'
 import { HttpClientModule } from '@angular/common/http'
 import { AuthorizationService } from './services/authorization.service';
+import { HttpService } from './services/http.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { AuthorizationService } from './services/authorization.service';
     GridModule,
     HttpClientModule
   ],
-  providers: [BaseHttpService, AuthorizationService],
+  providers: [BaseHttpService, AuthorizationService, HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
