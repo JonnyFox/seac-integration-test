@@ -8,11 +8,14 @@ import { BaseHttpService } from './services/base-http.service'
 import { HttpClientModule } from '@angular/common/http'
 import { AuthorizationService } from './services/authorization.service';
 import { HttpService } from './services/http.service';
+import { EmployeeIncomeBindingDirective } from './services/employee-income-binding.directive';
+import { EmployeeIncomeService } from './services/employee-income.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GridComponent
+    GridComponent,
+    EmployeeIncomeBindingDirective
   ],
   imports: [
     BrowserModule,
@@ -20,7 +23,7 @@ import { HttpService } from './services/http.service';
     GridModule,
     HttpClientModule
   ],
-  providers: [BaseHttpService, AuthorizationService, HttpService],
+  providers: [BaseHttpService, AuthorizationService, HttpService, EmployeeIncomeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
