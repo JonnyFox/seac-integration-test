@@ -56,11 +56,6 @@
   },
   "defaults": {
     "styleExt": "scss",
-<<<<<<< HEAD:.angular-cli.json
     "component": {}
-=======
-    "component": {
-    }
->>>>>>> c553c751ebabe6bb688c5d3edbd9ce3e72cbc310:FrontEnd/.angular-cli.json
   }
 }
