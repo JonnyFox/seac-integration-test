@@ -1,17 +1,24 @@
-<kendo-grid
-EmployeeIncomeBinding
-  [data]="gridData"
-  [height]="410"
+<div class="grid-wrapper">
+  <kendo-grid
+  [data]="view | async"
+  [pageSize]="state.take"
+  [skip]="state.skip"
+  [sort]="state.sort"
   [sortable]="true"
-  [filterable]="true" >
-  <kendo-grid-column field="taxCode" title="Codice fiscale">
-  </kendo-grid-column>
-  <kendo-grid-column field="firstName" title="Nome">
-  </kendo-grid-column>
-  <kendo-grid-column field="lastName" title="Cognome">
-  </kendo-grid-column>
-  <kendo-grid-column field="caafCode" title="Codice Caaf">
-  </kendo-grid-column>
-  <kendo-grid-column field="income" title="Reddito Dipendente">
-  </kendo-grid-column>
-</kendo-grid>
+  [pageable]="true"
+  [scrollable]="'none'"
+  (dataStateChange)="dataStateChange($event)">
+    <kendo-grid-column field="taxCode" title="Codice fiscale">
+    </kendo-grid-column>
+    <kendo-grid-column field="firstName" title="Nome">
+    </kendo-grid-column>
+    <kendo-grid-column field="lastName" title="Cognome">
+    </kendo-grid-column>
+    <kendo-grid-column field="caafCode" title="Codice Caaf">
+    </kendo-grid-column>
+    <kendo-grid-column field="income" title="Reddito Dipendente">
+    </kendo-grid-column>
+  </kendo-grid>
+
+  <div *ngIf="service.isLoading" class="k-i-loading"></div>
+</div>

@@ -13,7 +13,7 @@ namespace Seac.WebDeleghe.Web.Controllers
         { }
 
         [HttpGet]
-        public Task<ActionResult> GetEmployeeIncome() => 
-            ToODataAsync(InvokeQueryAsync(new GetEmploeeIncomeQuery()));
+        public Task<ActionResult> GetEmployeeIncome() =>
+            ToODataAsync(InvokeQueryAsync(new GetEmploeeIncomeQuery()), true);
     }
 }

@@ -10,7 +10,7 @@ import { HttpService } from './http.service';
 import { OdataResponse } from '../domain/core/odata-response';
 
 export abstract class ODataService extends BehaviorSubject<GridDataResult> {
-
+  public isLoading = true;
   constructor(private http: HttpClient, protected tableName: string, private authorizationService: AuthorizationService, private httpService: HttpService) {
     super(null);
   }
@@ -22,6 +22,7 @@ export abstract class ODataService extends BehaviorSubject<GridDataResult> {
 
   protected async fetch(tableName: string, state: any): Promise<GridDataResult> {
     const queryStr = `${toODataString(state)}&$count=true`;
+    this.isLoading = true;
 
     let token = await this.authorizationService.getToken();
 
@@ -39,7 +40,7 @@ export abstract class ODataService extends BehaviorSubject<GridDataResult> {
       data: response.items,
       total: response.count
     };
-
+    this.isLoading = false;
     return Promise.resolve(gridData);
   }
 }
