@@ -2,15 +2,16 @@
 EmployeeIncomeBinding
   [data]="gridData"
   [height]="410"
-  [sortable]="true" >
-  <kendo-grid-column field="taxCode" title="Codice fiscale" width="40">
+  [sortable]="true"
+  [filterable]="true" >
+  <kendo-grid-column field="taxCode" title="Codice fiscale">
   </kendo-grid-column>
-  <kendo-grid-column field="firstName" title="Nome" width="250">
+  <kendo-grid-column field="firstName" title="Nome">
   </kendo-grid-column>
   <kendo-grid-column field="lastName" title="Cognome">
   </kendo-grid-column>
-  <kendo-grid-column field="caafCode" title="Codice Caaf" width="80">
+  <kendo-grid-column field="caafCode" title="Codice Caaf">
   </kendo-grid-column>
-  <kendo-grid-column field="income" title="Reddito Dipendente" width="80">
+  <kendo-grid-column field="income" title="Reddito Dipendente">
   </kendo-grid-column>
 </kendo-grid>

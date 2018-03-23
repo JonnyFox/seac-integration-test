@@ -55,6 +55,7 @@ namespace FactoryMind.Template.Web
 #if DEBUG
             app.UseCors(p =>
             {
+                p.AllowCredentials();
                 p.AllowAnyHeader();
                 p.AllowAnyMethod();
                 p.AllowAnyOrigin();

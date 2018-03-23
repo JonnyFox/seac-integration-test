@@ -19,6 +19,7 @@ namespace FactoryMind.Template.Web.Configuration
         {
             var builder = new ODataConventionModelBuilder(serviceProvider);
 
+            builder.EnableLowerCamelCase();
             SubscribeConfigurators(builder);
             ModelBuilder = builder;
             EdmModel = builder.GetEdmModel();

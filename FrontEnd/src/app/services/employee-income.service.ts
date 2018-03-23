@@ -41,19 +41,6 @@ export abstract class ODataService extends BehaviorSubject<GridDataResult> {
       }))
     ).toPromise();
   }
-
-  public queryForFirstName({ FirstName }: { FirstName: string }, state?: any): void {
-    this.query(Object.assign({}, state, {
-        filter: {
-            filters: [{
-                field: 'FirstName', operator: 'eq', value: FirstName
-            }],
-            logic: 'and'
-        }
-    }));
-}
-
-
 }
 
 @Injectable()
