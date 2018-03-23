@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { BaseHttpService, HttpOptions } from './base-http.service';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { AuthorizationToken } from '../domain/models/authorization-token';
+import { HttpService, HttpOptions } from './http.service';
 
 @Injectable()
-export class AuthorizationService extends BaseHttpService {
+export class AuthorizationService extends HttpService {
 
   constructor(protected http: HttpClient) {
     super(http);
@@ -21,7 +21,7 @@ export class AuthorizationService extends BaseHttpService {
     body.set('client_secret', 'secret');
     body.set('scope', 'api1');
 
-    return this.sendPost<AuthorizationToken>("connect/token", body.toString(), params).toPromise();
+    return this.Post<AuthorizationToken>("connect/token", body.toString(), params);
   }
 
   protected buildOptions(auth: boolean, queryParams: HttpParams): HttpOptions {

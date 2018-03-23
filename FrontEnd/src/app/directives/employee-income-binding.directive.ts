@@ -14,7 +14,6 @@ export class EmployeeIncomeBindingDirective extends DataBindingDirective impleme
     }
 
     public ngOnInit(): void {
-      console.log("yeee");
         this.serviceSubscription = this.products.subscribe((result) => {
             this.grid.data = result;
             this.notifyDataChange();
