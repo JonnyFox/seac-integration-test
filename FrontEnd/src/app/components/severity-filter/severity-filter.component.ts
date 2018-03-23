@@ -11,7 +11,12 @@ export class SeverityFilterComponent {
   public minValue: number = 100;
   public maxValue: number = 1000;
   public selectedItem: string;
-  public listItems: Array<string> = ["Trascurabile", "Lieve", "Consistente", "Grave"];
+  public listItems: Array<{ text: string, value: number, class: string }> = [
+    { text: "Trascurabile", value: 1, class: 'gravity0' },
+    { text: "Lieve", value: 2, class: 'gravity1' },
+    { text: "Consistente", value: 3, class: 'gravity2' },
+    { text: "Grave", value: 3, class: 'gravity3' }
+  ];
 
   public MinValueChanged(changes: number): void {
     this.minValue = changes;

@@ -12,6 +12,5 @@
   color: #ff6757;
 }
 
-.gravity1 { background-color: #FFBA80; }
-.gravity0 { background-color: #B2F699; }
-
+.gravity1 .codeColumn{ background-color: #FFBA80; }
+.gravity0 .codeColumn{ background-color: #B2F699; }

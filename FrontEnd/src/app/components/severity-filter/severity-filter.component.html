@@ -2,5 +2,19 @@
 </kendo-numerictextbox>
 <kendo-numerictextbox [value]="maxValue" (valueChange)="this.MaxValueChanged($event)">
 </kendo-numerictextbox>
-<kendo-dropdownlist [data]="listItems" (valueChange)="this.SeverityValueChanged($event)">
+<kendo-dropdownlist [data]="listItems" [textField]="'text'" [valueField]="'value'" (valueChange)="this.SeverityValueChanged($event)">
+  <!--
+<ng-template kendoDropDownListItemTemplate let-dataItem>
+    <span [class]="dataItem.class" style="width: 100%; padding: 0; margin: 0; color: white;">{{ dataItem.text }}</span>
+</ng-template>
+-->
+  <ng-template kendoDropDownListItemTemplate let-dataItem>
+    <span style="width: 50%">
+      {{ dataItem.text }}
+    </span>
+    <span style="width: 50%">
+        <span style="width: 20px; height: 20px; float: right" [class]="dataItem.class">
+        </span>
+    </span>
+  </ng-template>
 </kendo-dropdownlist>
