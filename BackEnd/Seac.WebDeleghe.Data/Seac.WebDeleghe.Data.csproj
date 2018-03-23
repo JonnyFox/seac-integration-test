@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.0-preview1-final" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.1.0-preview1-final" />
+    <PackageReference Include="Z.EntityFramework.Plus.EFCore" Version="1.7.15" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Batch\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Seac.WebDeleghe.Core\Seac.WebDeleghe.Core.csproj" />
+  </ItemGroup>
+
+</Project>
