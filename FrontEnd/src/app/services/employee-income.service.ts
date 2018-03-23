@@ -7,9 +7,9 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { map } from 'rxjs/operators/map';
 import { AuthorizationService } from './authorization.service';
 import { HttpService } from './http.service';
+import { OdataResponse } from '../domain/core/odata-response';
 
 export abstract class ODataService extends BehaviorSubject<GridDataResult> {
-  private BASE_URL = 'https://localhost:8080/api/';
 
   constructor(private http: HttpClient, protected tableName: string, private authorizationService: AuthorizationService, private httpService: HttpService) {
     super(null);
@@ -34,12 +34,13 @@ export abstract class ODataService extends BehaviorSubject<GridDataResult> {
       params: null
     };
 
-    return this.httpService.Get<any>(`api/${tableName}?${queryStr}`, null, headers).pipe(
-      map(response => (<GridDataResult>{
-        data: response['items'],
-        total: parseInt(response['@odata.count'], 10)
-      }))
-    ).toPromise();
+    let response = await this.httpService.Get<OdataResponse>(`api/${tableName}?${queryStr}`, null, headers);
+    let gridData = <GridDataResult>{
+      data: response.items,
+      total: response.count
+    };
+
+    return Promise.resolve(gridData);
   }
 }
 

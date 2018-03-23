@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BaseHttpService, HttpOptions } from './base-http.service';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-import { AuthorizationToken } from '../domain/models/AuthorizationToken';
 import { Observable } from 'rxjs/Observable';
+import { AuthorizationToken } from '../domain/models/authorization-token';
 
 @Injectable()
 export class AuthorizationService extends BaseHttpService {
