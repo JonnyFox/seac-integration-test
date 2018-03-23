@@ -39,7 +39,8 @@ namespace Seac.WebDeleghe.Web.Configuration
 
         public IEnumerable<ApiResource> GetApiResources() => new List<ApiResource>
         {
-            new ApiResource(_configurationService.ApiName, _configurationService.ApiDescription)
+            new ApiResource(_configurationService.ApiName, _configurationService.ApiDescription),
+            new ApiResource(IdentityServerConstants.StandardScopes.OfflineAccess, _configurationService.ApiDescription)
         };
 
         public void AddSigningCredential(IIdentityServerBuilder builder) =>

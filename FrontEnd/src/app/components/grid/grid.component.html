@@ -8,7 +8,8 @@
   [filterable]="true"
   [pageable]="true"
   [scrollable]="'none'"
-  (dataStateChange)="dataStateChange($event)">
+  (dataStateChange)="dataStateChange($event)"
+  [rowClass]="rowCallback">
     <kendo-grid-column field="taxCode" title="Codice fiscale">
     </kendo-grid-column>
     <kendo-grid-column field="firstName" title="Nome">
