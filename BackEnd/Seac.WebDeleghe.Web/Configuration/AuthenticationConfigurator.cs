@@ -3,6 +3,7 @@ using IdentityServer4.AccessTokenValidation;
 using IdentityServer4.Models;
 using Microsoft.Extensions.DependencyInjection;
 using Seac.WebDeleghe.Auth;
+using Seac.WebDeleghe.Business;
 
 namespace Seac.WebDeleghe.Web.Configuration
 {
