@@ -1,7 +1,7 @@
 import { Directive, OnInit, OnDestroy } from '@angular/core';
 import { DataBindingDirective, GridComponent } from '@progress/kendo-angular-grid';
 import { Subscription } from 'rxjs/Subscription';
-import { EmployeeIncomeService } from './employee-income.service';
+import { EmployeeIncomeService } from '../services/employee-income.service';
 
 @Directive({
     selector: '[EmployeeIncomeBinding]'

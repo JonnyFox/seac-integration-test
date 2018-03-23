@@ -8,8 +8,8 @@ import { BaseHttpService } from './services/base-http.service'
 import { HttpClientModule } from '@angular/common/http'
 import { AuthorizationService } from './services/authorization.service';
 import { HttpService } from './services/http.service';
-import { EmployeeIncomeBindingDirective } from './services/employee-income-binding.directive';
 import { EmployeeIncomeService } from './services/employee-income.service';
+import { EmployeeIncomeBindingDirective } from './directives/employee-income-binding.directive';
 
 @NgModule({
   declarations: [
