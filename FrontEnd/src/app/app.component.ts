@@ -1,6 +1,6 @@
 import { Component, SimpleChange } from '@angular/core';
 import { MainPageService } from './services/main-page.service';
-import { SeverityFilterData } from './components/severity-filter/severity-filter.component';
+import { GravitySelectorComponent } from './components/gravity-selector/gravity-selector.component';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'app';
   constructor(private pageService: MainPageService) { }
 
-  onChanged(filterData: SeverityFilterData) {
+  onChanged(filterData: GravitySelectorComponent) {
     console.log(filterData);
   }
 }

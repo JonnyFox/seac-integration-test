@@ -1,5 +1,4 @@
 import { Component, OnInit, OnChanges, SimpleChanges, ViewEncapsulation } from '@angular/core';
-import { products } from './products';
 import { HttpParams, HttpHeaders } from '@angular/common/http';
 import { HttpService } from '../../services/http.service';
 import { EmployeeIncome } from '../../domain/models/employee-income';
@@ -7,7 +6,8 @@ import { AuthorizationService } from '../../services/authorization.service';
 import { GridDataResult, DataStateChangeEvent, RowClassArgs } from '@progress/kendo-angular-grid';
 import { Observable } from 'rxjs/Observable';
 import { State } from '@progress/kendo-data-query';
-import { EmployeeIncomeService } from '../../services/employee-income.service';
+import { EmployeeIncomeService } from '../../services/employee-income-grid.service';
+import { selectedItem } from '../gravity-selector/gravity-selector.component';
 
 @Component({
   selector: 'app-grid',
@@ -18,6 +18,7 @@ import { EmployeeIncomeService } from '../../services/employee-income.service';
 
 export class DataGrid {
   public view: Observable<GridDataResult>;
+  public gravitySelector :selectedItem;
 
   public state: State = {
     skip: 0,

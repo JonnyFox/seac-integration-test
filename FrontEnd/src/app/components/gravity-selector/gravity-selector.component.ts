@@ -1,21 +1,21 @@
 import { Component, OnInit, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
-  selector: 'app-severity-filter',
-  templateUrl: './severity-filter.component.html',
-  styleUrls: ['./severity-filter.component.scss']
+  selector: 'app-gravity-selector',
+  templateUrl: './gravity-selector.component.html',
+  styleUrls: ['./gravity-selector.component.scss']
 })
-export class SeverityFilterComponent {
+export class GravitySelectorComponent {
   @Output() onChanged: EventEmitter<SeverityFilterData> = new EventEmitter();
 
   public minValue: number = 100;
   public maxValue: number = 1000;
-  public selectedItem: string;
-  public listItems: Array<{ text: string, value: number, class: string }> = [
-    { text: "Trascurabile", value: 1, class: 'gravity0' },
-    { text: "Lieve", value: 2, class: 'gravity1' },
-    { text: "Consistente", value: 3, class: 'gravity2' },
-    { text: "Grave", value: 3, class: 'gravity3' }
+  public selectedItem: selectedItem;
+  public listItems: Array<selectedItem> = [
+    { text: "Trascurabile", value: 1, class: 'gravity1' },
+    { text: "Lieve", value: 2, class: 'gravity2' },
+    { text: "Consistente", value: 3, class: 'gravity3' },
+    { text: "Grave", value: 4, class: 'gravity4' }
   ];
 
   public MinValueChanged(changes: number): void {
@@ -26,7 +26,7 @@ export class SeverityFilterComponent {
     this.maxValue = changes;
     this.emitChangeEvent();
   }
-  public SeverityValueChanged(changes: string): void {
+  public SeverityValueChanged(changes: selectedItem): void {
     this.selectedItem = changes;
     this.emitChangeEvent();
   }
@@ -43,5 +43,11 @@ export class SeverityFilterComponent {
 export class SeverityFilterData {
   readonly minValue: number;
   readonly maxValue: number;
-  readonly selectedItem: string;
+  readonly selectedItem: selectedItem;
+}
+
+export class selectedItem{
+  readonly text: string;
+  readonly value: number;
+  readonly class: string;
 }
