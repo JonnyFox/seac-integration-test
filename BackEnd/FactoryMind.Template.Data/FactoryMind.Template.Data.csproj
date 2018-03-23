@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.0-preview1-final" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.1.0-preview1-final" />
+    <PackageReference Include="Z.EntityFramework.Plus.EFCore" Version="1.7.15" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FactoryMind.Template.Core\FactoryMind.Template.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Batch\" />
+  </ItemGroup>
+
+</Project>
