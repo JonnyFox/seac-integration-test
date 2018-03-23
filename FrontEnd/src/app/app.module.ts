@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http'
 import { AuthorizationService } from './services/authorization.service';
 import { HttpService } from './services/http.service';
 import { EmployeeIncomeService } from './services/employee-income.service';
-import { EmployeeIncomeBindingDirective } from './directives/employee-income-binding.directive';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { SeverityFilterComponent } from './components/severity-filter/severity-filter.component';
@@ -17,7 +16,6 @@ import { DataGrid } from './components/grid/grid.component';
   declarations: [
     AppComponent,
     DataGrid,
-    EmployeeIncomeBindingDirective,
     SeverityFilterComponent
   ],
   imports: [
