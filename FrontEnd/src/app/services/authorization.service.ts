@@ -19,7 +19,7 @@ export class AuthorizationService extends HttpService {
     body.set('grant_type', 'password');
     body.set('client_id', 'ro.client');
     body.set('client_secret', 'secret');
-    body.set('scope', 'api1');
+    body.set('scope', 'offline_access');
 
     return this.Post<AuthorizationToken>("connect/token", body.toString(), params);
   }

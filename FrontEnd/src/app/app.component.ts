@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, SimpleChange } from '@angular/core';
+import { MainPageService } from './services/main-page.service';
+import { SeverityFilterData } from './components/severity-filter/severity-filter.component';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  constructor(private pageService: MainPageService) { }
+
+  onChanged(filterData: SeverityFilterData) {
+    console.log(filterData);
+  }
 }

@@ -11,6 +11,7 @@ import { InputsModule } from '@progress/kendo-angular-inputs';
 import { SeverityFilterComponent } from './components/severity-filter/severity-filter.component';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { DataGrid } from './components/grid/grid.component';
+import { MainPageService } from './services/main-page.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { DataGrid } from './components/grid/grid.component';
     InputsModule,
     DropDownsModule
   ],
-  providers: [AuthorizationService, HttpService, EmployeeIncomeService],
+  providers: [AuthorizationService, HttpService, EmployeeIncomeService, MainPageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

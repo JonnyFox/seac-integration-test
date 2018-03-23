@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using IdentityServer4;
 using IdentityServer4.AccessTokenValidation;
 using IdentityServer4.Models;
 using Microsoft.Extensions.DependencyInjection;
 using Seac.WebDeleghe.Auth;
 using Seac.WebDeleghe.Business;
+using Seac.WebDeleghe.Core.Extensions;
 
 namespace Seac.WebDeleghe.Web.Configuration
 {
@@ -20,13 +23,17 @@ namespace Seac.WebDeleghe.Web.Configuration
         {
             new Client
             {
+                AllowOfflineAccess = true,
+                RefreshTokenUsage = TokenUsage.ReUse,
+                RefreshTokenExpiration = TokenExpiration.Sliding,
+                UpdateAccessTokenClaimsOnRefresh = true,
                 ClientId = _configurationService.ResourceOwnerClientName,
                 AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                 ClientSecrets =
                 {
                     new Secret(_configurationService.ResourceOwnerClientSecret.Sha256())
                 },
-                AllowedScopes = _configurationService.AllowedResourceOwnerClientScopes
+                AllowedScopes = _configurationService.AllowedResourceOwnerClientScopes.Concat(IdentityServerConstants.StandardScopes.OfflineAccess).ToArray()
             }
         };
 
