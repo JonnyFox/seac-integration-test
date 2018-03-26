@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, EventEmitter, OnChanges, SimpleChanges, Input } from '@angular/core';
 import { EmployeeIncomeService } from '../../services/employee-income-grid.service';
 import { GravitySelectorService } from '../../services/gravity-selector.service';
 
@@ -8,10 +8,7 @@ import { GravitySelectorService } from '../../services/gravity-selector.service'
   styleUrls: ['./gravity-selector.component.scss']
 })
 
-export class GravitySelectorComponent {
-
-  public minValue: number = 100;
-  public maxValue: number = 1000;
+export class GravitySelectorComponent implements OnInit {
   public selectedItem: selectedItem = null;
   public listItems: Array<selectedItem> = [
     { text: "Trascurabile", value: 1, class: 'gravity1' },
@@ -20,7 +17,17 @@ export class GravitySelectorComponent {
     { text: "Grave", value: 4, class: 'gravity4' }
   ];
 
+  @Input() selectorId: number = null;
+  @Input() minValue: number = null;
+  @Input() maxValue: number = null;
+
   constructor(private gridService: EmployeeIncomeService, private service: GravitySelectorService) { }
+
+  ngOnInit(): void {
+    if (this.selectorId == null) {
+      throw new Error(`selectorId not set as input for component ${GravitySelectorComponent.name}`);
+    }
+  }
 
   public MinValueChanged(changes: number): void {
     this.minValue = changes;
@@ -31,20 +38,23 @@ export class GravitySelectorComponent {
     this.emitChangeEvent();
   }
   public SeverityValueChanged(changes: selectedItem): void {
+    console.log("dioporco")
     this.selectedItem = changes;
     this.emitChangeEvent();
   }
 
   private emitChangeEvent() {
-      this.service.onChanged.emit(<SeverityFilterData>{
-        minValue: this.minValue,
-        maxValue: this.maxValue,
-        selectedItem: this.selectedItem
-      });
+    this.service.setData(<SeverityFilterData>{
+      id: this.selectorId,
+      minValue: this.minValue,
+      maxValue: this.maxValue,
+      selectedItem: this.selectedItem
+    });
   }
 }
 
 export class SeverityFilterData {
+  readonly id: number;
   readonly minValue: number;
   readonly maxValue: number;
   readonly selectedItem: selectedItem;

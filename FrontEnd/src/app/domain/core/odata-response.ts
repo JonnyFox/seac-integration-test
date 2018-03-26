@@ -1,7 +1,7 @@
 export class OdataResponse {
   constructor(
     public items: any,
-    public nextPageLink: any, // string?
+    public nextPageLink: any,
     public count: number
   ) { }
 }

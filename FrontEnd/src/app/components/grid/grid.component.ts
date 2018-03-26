@@ -3,7 +3,7 @@ import { HttpParams, HttpHeaders } from '@angular/common/http';
 import { HttpService } from '../../services/http.service';
 import { EmployeeIncome } from '../../domain/models/employee-income';
 import { AuthorizationService } from '../../services/authorization.service';
-import { GridDataResult, DataStateChangeEvent, RowClassArgs } from '@progress/kendo-angular-grid';
+import { GridDataResult, DataStateChangeEvent, RowClassArgs, PageChangeEvent, GridComponent } from '@progress/kendo-angular-grid';
 import { Observable } from 'rxjs/Observable';
 import { State } from '@progress/kendo-data-query';
 import { EmployeeIncomeService } from '../../services/employee-income-grid.service';
@@ -19,7 +19,7 @@ import { GravitySelectorService } from '../../services/gravity-selector.service'
 
 export class DataGrid {
   public view: Observable<GridDataResult>;
-  private severityFilterData: SeverityFilterData = null;
+  private severityFilterDataList: Array<SeverityFilterData> = null;
 
   public state: State = {
     skip: 0,
@@ -32,8 +32,8 @@ export class DataGrid {
     this.gravitySelectorService.onChanged.subscribe(res => this.onSeverityDataCahanged(res));
   }
 
-  public onSeverityDataCahanged(data: SeverityFilterData) {
-    this.severityFilterData = data;
+  public onSeverityDataCahanged(data: Array<SeverityFilterData>) {
+    this.severityFilterDataList = data;
     this.service.localRefresh();
   }
 
@@ -42,19 +42,32 @@ export class DataGrid {
     this.service.query(state);
   }
 
+  public pageChange(event: PageChangeEvent): void {
+    this.state.skip = event.skip;
+    this.service.localRefresh();
+  }
+
   public rowCallback = (context: RowClassArgs) => {
-    if (this.severityFilterData == null || this.severityFilterData.selectedItem == null) {
+    if (this.severityFilterDataList == null) {
       return;
     }
 
-    let income = context.dataItem.income;
-    if (income < this.severityFilterData.maxValue && income > this.severityFilterData.minValue) { // todo: list
-      return {
-        gravity1: this.severityFilterData.selectedItem.class == 'gravity1',
-        gravity2: this.severityFilterData.selectedItem.class == 'gravity2',
-        gravity3: this.severityFilterData.selectedItem.class == 'gravity3',
-        gravity4: this.severityFilterData.selectedItem.class == 'gravity4'
-      };
-    }
+    for (let element of this.severityFilterDataList) {
+
+      if (element == null || element.selectedItem == null) {
+        return;
+      }
+
+      let income = context.dataItem.income;
+      if (income < element.maxValue && income > element.minValue) { // todo: list
+        let colorClass = element.selectedItem.class;
+        return {
+          gravity1: colorClass == 'gravity1',
+          gravity2: colorClass == 'gravity2',
+          gravity3: colorClass == 'gravity3',
+          gravity4: colorClass == 'gravity4'
+        };
+      }
+    });
   }
 }

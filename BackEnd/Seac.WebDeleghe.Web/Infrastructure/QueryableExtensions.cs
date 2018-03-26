@@ -32,17 +32,17 @@ namespace Seac.WebDeleghe.Web.Infrastructure
                 // when the OData query does not contain order (from front-end). EnsureStableOrdering orders the source query for PKs
                 // just to ensure the pagination is correct. If Skip or take is present in the query without an ordering EF throws exception.
                 //EnsureStableOrdering = queryOptions.OrderBy == null && !QueryableOrderExpressionVisitor.IsOrdered(source.Expression),
+                
                 EnableConstantParameterization = true
             };
 
-            var filteredQuery = queryOptions.ApplyTo(source, settings).Cast<TResult>();
             var count = default(long?);
-
             if (computeCount)
             {
-                count = await filteredQuery.LongCountAsync(context.RequestAborted);
+                count = await source.LongCountAsync(context.RequestAborted);
             }
 
+            var filteredQuery = queryOptions.ApplyTo(source, settings).Cast<TResult>();
             return new PageResult<TResult>(await filteredQuery.ToListAsync(context.RequestAborted), null, count);
         }
     }

@@ -3,8 +3,18 @@ import { SeverityFilterData } from '../components/gravity-selector/gravity-selec
 
 @Injectable()
 export class GravitySelectorService {
-  public onChanged: EventEmitter<SeverityFilterData> = new EventEmitter(); //todo: list
+  public elements: Array<SeverityFilterData> = new Array<SeverityFilterData>();
+  public onChanged: EventEmitter<Array<SeverityFilterData>> = new EventEmitter();
 
-  constructor() {
+  public setData(filterData: SeverityFilterData){
+    let element = this.elements.find(elem => elem.id == filterData.id);
+    if (element != null) {
+      this.elements.splice(this.elements.indexOf(element));
+    }
+
+    this.elements.push(filterData);
+    this.onChanged.emit(this.elements);
   }
+
+  constructor() {  }
 }

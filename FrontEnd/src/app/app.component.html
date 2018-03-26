@@ -1,6 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="main-content">
-  <app-gravity-selector (onChanged)="onChanged($event)"></app-gravity-selector>
+  <app-gravity-selector (onChanged)="onChanged($event)" [selectorId]=1 [minValue]=100 [maxValue]=500></app-gravity-selector>  <br>
+  <app-gravity-selector (onChanged)="onChanged($event)" [selectorId]=2 [minValue]=500 [maxValue]=1000></app-gravity-selector>  <br>
+  <app-gravity-selector (onChanged)="onChanged($event)" [selectorId]=3 [minValue]=1000 [maxValue]=2000></app-gravity-selector>  <br>
+  <app-gravity-selector (onChanged)="onChanged($event)" [selectorId]=4 [minValue]=2000 [maxValue]=10000></app-gravity-selector>  <br>
   <app-grid></app-grid>
 </div>
-
