@@ -12,6 +12,7 @@ import { DataGrid } from './components/grid/grid.component';
 import { MainPageService } from './services/main-page.service';
 import { EmployeeIncomeService } from './services/employee-income-grid.service';
 import { GravitySelectorComponent } from './components/gravity-selector/gravity-selector.component';
+import { GravitySelectorService } from './services/gravity-selector.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { GravitySelectorComponent } from './components/gravity-selector/gravity-
     InputsModule,
     DropDownsModule
   ],
-  providers: [AuthorizationService, HttpService, EmployeeIncomeService, MainPageService],
+  providers: [AuthorizationService, HttpService, EmployeeIncomeService, MainPageService, GravitySelectorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

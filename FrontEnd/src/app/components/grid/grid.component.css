@@ -12,5 +12,7 @@
   color: #ff6757;
 }
 
-.gravity1 .codeColumn{ background-color: #FFBA80; }
-.gravity0 .codeColumn{ background-color: #B2F699; }
+.gravity1 .codeColumn{ background-color: #B2F699; }
+.gravity2 .codeColumn{ background-color: #FFBA80; }
+.gravity3 .codeColumn{ background-color: rgb(228, 118, 44); }
+.gravity4 .codeColumn{ background-color: rgb(250, 63, 57); }

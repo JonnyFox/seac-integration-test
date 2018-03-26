@@ -8,16 +8,22 @@ import { map } from 'rxjs/operators/map';
 import { AuthorizationService } from './authorization.service';
 import { HttpService } from './http.service';
 import { OdataResponse } from '../domain/core/odata-response';
+import { selectedItem, SeverityFilterData } from '../components/gravity-selector/gravity-selector.component';
 
 export abstract class ODataService extends BehaviorSubject<GridDataResult> {
   public isLoading = true;
+  private data: GridDataResult;
   constructor(private http: HttpClient, protected tableName: string, private authorizationService: AuthorizationService, private httpService: HttpService) {
     super(null);
   }
 
   public async query(state: any): Promise<void> {
-    let x = await this.fetch(this.tableName, state)
-    super.next(x);
+    this.data = await this.fetch(this.tableName, state);
+    super.next(this.data);
+  }
+
+  public localRefresh(){
+    super.next(this.data);
   }
 
   protected async fetch(tableName: string, state: any): Promise<GridDataResult> {
@@ -47,8 +53,11 @@ export abstract class ODataService extends BehaviorSubject<GridDataResult> {
 
 @Injectable()
 export class EmployeeIncomeService extends ODataService {
+  public severityFilterData: SeverityFilterData;
+
   constructor(http: HttpClient, authorizationService: AuthorizationService, httpService: HttpService) {
     super(http, 'employeeIncome', authorizationService, httpService);
+    this.severityFilterData = null;
   }
 
   queryAll(st?: any): Promise<GridDataResult> {

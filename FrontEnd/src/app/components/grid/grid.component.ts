@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, ViewEncapsulation, Input } from '@angular/core';
 import { HttpParams, HttpHeaders } from '@angular/common/http';
 import { HttpService } from '../../services/http.service';
 import { EmployeeIncome } from '../../domain/models/employee-income';
@@ -7,7 +7,8 @@ import { GridDataResult, DataStateChangeEvent, RowClassArgs } from '@progress/ke
 import { Observable } from 'rxjs/Observable';
 import { State } from '@progress/kendo-data-query';
 import { EmployeeIncomeService } from '../../services/employee-income-grid.service';
-import { selectedItem } from '../gravity-selector/gravity-selector.component';
+import { selectedItem, SeverityFilterData } from '../gravity-selector/gravity-selector.component';
+import { GravitySelectorService } from '../../services/gravity-selector.service';
 
 @Component({
   selector: 'app-grid',
@@ -18,16 +19,22 @@ import { selectedItem } from '../gravity-selector/gravity-selector.component';
 
 export class DataGrid {
   public view: Observable<GridDataResult>;
-  public gravitySelector :selectedItem;
+  private severityFilterData: SeverityFilterData = null;
 
   public state: State = {
     skip: 0,
     take: 10,
   };
 
-  constructor(public service: EmployeeIncomeService) {
+  constructor(public service: EmployeeIncomeService, private gravitySelectorService: GravitySelectorService) {
     this.view = service;
     this.service.query(this.state);
+    this.gravitySelectorService.onChanged.subscribe(res => this.onSeverityDataCahanged(res));
+  }
+
+  public onSeverityDataCahanged(data: SeverityFilterData) {
+    this.severityFilterData = data;
+    this.service.localRefresh();
   }
 
   public dataStateChange(state: DataStateChangeEvent): void {
@@ -36,10 +43,18 @@ export class DataGrid {
   }
 
   public rowCallback = (context: RowClassArgs) => {
-    let income = context.dataItem.income;
-    if (income > 2000) {
-      return { gravity1: true };
+    if (this.severityFilterData == null || this.severityFilterData.selectedItem == null) {
+      return;
     }
-    return {};
+
+    let income = context.dataItem.income;
+    if (income < this.severityFilterData.maxValue && income > this.severityFilterData.minValue) { // todo: list
+      return {
+        gravity1: this.severityFilterData.selectedItem.class == 'gravity1',
+        gravity2: this.severityFilterData.selectedItem.class == 'gravity2',
+        gravity3: this.severityFilterData.selectedItem.class == 'gravity3',
+        gravity4: this.severityFilterData.selectedItem.class == 'gravity4'
+      };
+    }
   }
 }
