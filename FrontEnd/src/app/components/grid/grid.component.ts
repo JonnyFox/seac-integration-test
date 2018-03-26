@@ -7,7 +7,7 @@ import { GridDataResult, DataStateChangeEvent, RowClassArgs, PageChangeEvent, Gr
 import { Observable } from 'rxjs/Observable';
 import { State } from '@progress/kendo-data-query';
 import { EmployeeIncomeService } from '../../services/employee-income-grid.service';
-import { selectedItem, SeverityFilterData } from '../gravity-selector/gravity-selector.component';
+import { selectedClassInfo, SeverityFilterData } from '../gravity-selector/gravity-selector.component';
 import { GravitySelectorService } from '../../services/gravity-selector.service';
 
 @Component({
@@ -54,13 +54,13 @@ export class DataGrid {
 
     for (let element of this.severityFilterDataList) {
 
-      if (element == null || element.selectedItem == null) {
+      if (element == null || element.selectedClassInfo == null) {
         return;
       }
 
       let income = context.dataItem.income;
       if (income < element.maxValue && income > element.minValue) { // todo: list
-        let colorClass = element.selectedItem.class;
+        let colorClass = element.selectedClassInfo.class;
         return {
           gravity1: colorClass == 'gravity1',
           gravity2: colorClass == 'gravity2',
@@ -68,6 +68,6 @@ export class DataGrid {
           gravity4: colorClass == 'gravity4'
         };
       }
-    });
+    };
   }
 }

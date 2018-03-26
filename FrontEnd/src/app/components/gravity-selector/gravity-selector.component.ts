@@ -9,8 +9,8 @@ import { GravitySelectorService } from '../../services/gravity-selector.service'
 })
 
 export class GravitySelectorComponent implements OnInit {
-  public selectedItem: selectedItem = null;
-  public listItems: Array<selectedItem> = [
+  public selectedItem: selectedClassInfo = null;
+  public listItems: Array<selectedClassInfo> = [
     { text: "Trascurabile", value: 1, class: 'gravity1' },
     { text: "Lieve", value: 2, class: 'gravity2' },
     { text: "Consistente", value: 3, class: 'gravity3' },
@@ -37,7 +37,7 @@ export class GravitySelectorComponent implements OnInit {
     this.maxValue = changes;
     this.emitChangeEvent();
   }
-  public SeverityValueChanged(changes: selectedItem): void {
+  public SeverityValueChanged(changes: selectedClassInfo): void {
     console.log("dioporco")
     this.selectedItem = changes;
     this.emitChangeEvent();
@@ -48,7 +48,7 @@ export class GravitySelectorComponent implements OnInit {
       id: this.selectorId,
       minValue: this.minValue,
       maxValue: this.maxValue,
-      selectedItem: this.selectedItem
+      selectedClassInfo: this.selectedItem
     });
   }
 }
@@ -57,10 +57,10 @@ export class SeverityFilterData {
   readonly id: number;
   readonly minValue: number;
   readonly maxValue: number;
-  readonly selectedItem: selectedItem;
+  readonly selectedClassInfo: selectedClassInfo;
 }
 
-export class selectedItem {
+export class selectedClassInfo {
   readonly text: string;
   readonly value: number;
   readonly class: string;
