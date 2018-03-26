@@ -1,0 +1,15 @@
+<kendo-numerictextbox [value]="minValue" (valueChange)="minValueChanged($event)">
+</kendo-numerictextbox>
+<kendo-numerictextbox [value]="maxValue" (valueChange)="maxValueChanged($event)">
+</kendo-numerictextbox>
+<kendo-dropdownlist [data]="listItems" [textField]="'text'" [valueField]="'value'" (selectionChange)="severityValueChanged($event)">
+  <ng-template kendoDropDownListItemTemplate let-dataItem>
+    <span style="width: 50%">
+      {{ dataItem.text }}
+    </span>
+    <span style="width: 50%">
+      <span style="width: 20px; height: 20px; float: right" [class]="dataItem.class">
+      </span>
+    </span>
+  </ng-template>
+</kendo-dropdownlist>

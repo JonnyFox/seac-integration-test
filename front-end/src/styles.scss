@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~@progress/kendo-theme-default/dist/all.css";
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.integration-div {
+  border: 1px dashed #DDD;
+}
+
+// add bootstrap
+// Roboto thin
+// Kendo customization
+.k-grid-header .k-header {
+  font-size: .85rem;
+}
+
+.k-pager-numbers .k-link, .k-pager-numbers .k-link:link {
+    color: lime;
+}
+
+.k-state-selected{
+    background-color: lime;
+}
