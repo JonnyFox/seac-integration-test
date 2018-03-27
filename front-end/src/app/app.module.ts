@@ -12,6 +12,7 @@ import { DataGridComponent } from './components/grid/grid.component';
 import { EmployeeIncomeService } from './services/employee-income-grid.service';
 import { GravitySelectorComponent } from './components/gravity-selector/gravity-selector.component';
 import { GravitySelectorService } from './services/gravity-selector.service';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { GravitySelectorService } from './services/gravity-selector.service';
         PDFModule,
         HttpClientModule,
         InputsModule,
-        DropDownsModule
+        DropDownsModule,
+        ColorPickerModule
     ],
     providers: [
         AuthorizationService,

@@ -1,5 +1,9 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="main-content">
+
+
+    <input [(colorPicker)]="color" [style.background]="color"/>
+
   <app-gravity-selector (onChanged)="onChanged($event)" [selectorId]=1 [minValue]=100 [maxValue]=500></app-gravity-selector>
   <br>
   <app-gravity-selector (onChanged)="onChanged($event)" [selectorId]=2 [minValue]=500 [maxValue]=1000></app-gravity-selector>
