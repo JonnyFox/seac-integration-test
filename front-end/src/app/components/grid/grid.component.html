@@ -10,6 +10,9 @@
   [scrollable]="'none'"
   (dataStateChange)="dataStateChange($event)"
   [rowClass]="rowCallback">
+  <ng-template kendoGridToolbarTemplate>
+    <button type="button" kendoGridExcelCommand ><span class="k-icon k-i-file-excel"></span>Export to Excel</button>
+  </ng-template>
     <kendo-grid-column field="taxCode" title="Codice fiscale">
     </kendo-grid-column>
     <kendo-grid-column field="firstName" title="Nome">
@@ -20,7 +23,7 @@
     </kendo-grid-column>
     <kendo-grid-column field="income" title="Reddito dipendente (scostamento)" [class]="{'codeColumn': true}">
     </kendo-grid-column>
+    <kendo-grid-excel fileName="Categories.xlsx" [fetchData]="allData"></kendo-grid-excel>
   </kendo-grid>
-
-  <div *ngIf="service.isLoading" class="k-i-loading"></div>
+  <!--<div *ngIf="service.isLoading" class="k-i-loading"></div>-->
 </div>

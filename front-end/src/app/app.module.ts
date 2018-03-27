@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthorizationService } from './services/authorization.service';
 import { HttpService } from './services/http.service';
-import { GridModule } from '@progress/kendo-angular-grid';
+import { GridModule, ExcelModule } from '@progress/kendo-angular-grid';
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { DataGridComponent } from './components/grid/grid.component';
@@ -23,6 +23,7 @@ import { GravitySelectorService } from './services/gravity-selector.service';
         BrowserModule,
         BrowserAnimationsModule,
         GridModule,
+        ExcelModule,
         HttpClientModule,
         InputsModule,
         DropDownsModule

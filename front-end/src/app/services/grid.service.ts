@@ -22,6 +22,10 @@ export class GridService extends BehaviorSubject<GridDataResult> {
 			this.data = data;
 			super.next(this.data);
 		});
+  }
+  
+  public queryAll(state: State): Observable<GridDataResult> {
+		return this.fetch(this.tableName, state);
 	}
 
 	public localRefresh() {
