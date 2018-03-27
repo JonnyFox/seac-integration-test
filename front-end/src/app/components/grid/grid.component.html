@@ -1,11 +1,11 @@
 <div class="grid-wrapper">
-  <kendo-grid id="phanphy" [data]="view | async" [pageSize]="state.take" [skip]="state.skip" [sort]="state.sort" [sortable]="true"
+  <kendo-grid id="phanphy" [data]="view | async" [pageSize]="state.take" [skip]="state.skip" [sort]="state.sort" [sortable]="true" [selectable]="true"
     [filterable]="true" [pageable]="pageable" [scrollable]="'none'" (dataStateChange)="dataStateChange($event)" [rowClass]="rowCallback">
     <ng-template kendoGridToolbarTemplate>
       <button type="button" kendoGridExcelCommand><span class="k-icon k-i-file-excel"></span>Export to Excel</button>
       <button kendoGridPDFCommand><span class='k-icon k-i-file-pdf'></span>Export to PDF</button>
     </ng-template>
-    <kendo-grid-column field="taxCode" title="Codice fiscale">
+    <kendo-grid-column field="taxCode" title="Codice fiscale" [headerStyle]="{'text-align': 'right'}">
     </kendo-grid-column>
     <kendo-grid-column field="firstName" title="Nome">
     </kendo-grid-column>
@@ -13,8 +13,21 @@
     </kendo-grid-column>
     <kendo-grid-column field="caafCode" title="Codice CAAF">
     </kendo-grid-column>
-    <kendo-grid-column field="income" title="Reddito dipendente (scostamento)" [class]="{'codeColumn': true}">
+    <!--<kendo-grid-column field="income" format="{0:c}" title="Reddito dipendente (scostamento)" [class]="{'codeColumn': true}"> -->
+    <kendo-grid-column field="income" filter="numeric" title="Reddito dipendente (scostamento)" [class]="{'codeColumn': true}"> 
     </kendo-grid-column>
+    <ng-template kendoGridDetailTemplate let-dataItem>
+      <p><strong>Codice fiscale:</strong> {{dataItem.taxCode}} </p>
+      <p><strong>Nome:</strong> {{dataItem.firstName}} </p>
+      <p><strong>Cognome:</strong> {{dataItem.lastName}} </p>
+
+      <p><strong>Indirizzo:</strong> Via Kufstein, 5  </p>
+      <p><strong>Telefono:</strong> 3478908960 </p>
+      <p><strong>Email:</strong> {{dataItem.firstName}}.{{dataItem.lastName}}@gmail.com </p>
+
+      <p><strong>Codice CAAF:</strong> {{dataItem.caafCode}} </p>
+      <p><strong>Reddito dipendente (scostamento):</strong>  {{dataItem.income}} € </p>
+  </ng-template>
     <kendo-grid-excel fileName="EmployeeIncome.xlsx" [fetchData]="allData"></kendo-grid-excel>
     <kendo-grid-pdf fileName="EployeeIncome.pdf" [allPages]="true" paperSize="A4" [repeatHeaders]="true" [landscape]="true">
       <kendo-grid-pdf-margin top="2cm" left="1cm" right="1cm" bottom="2cm"></kendo-grid-pdf-margin>
@@ -22,7 +35,7 @@
         <div class="page-template">
           <div class="header">
             <div style="float: right">Page {{ pageNum }} of {{ totalPages }}</div>
-            Eployee Incomes
+            Eployee Incomes  
           </div>
           <div class="footer">
             Page {{ pageNum }} of {{ totalPages }}
