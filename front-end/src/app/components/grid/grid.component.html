@@ -1,18 +1,10 @@
 <div class="grid-wrapper">
-  <kendo-grid id="phanphy"
-  [data]="view | async"
-  [pageSize]="state.take"
-  [skip]="state.skip"
-  [sort]="state.sort"
-  [sortable]="true"
-  [filterable]="true"
-  [pageable]="pageable"
-  [scrollable]="'none'"
-  (dataStateChange)="dataStateChange($event)"
-  [rowClass]="rowCallback">
-  <ng-template kendoGridToolbarTemplate>
-    <button type="button" kendoGridExcelCommand ><span class="k-icon k-i-file-excel"></span>Export to Excel</button>
-  </ng-template>
+  <kendo-grid id="phanphy" [data]="view | async" [pageSize]="state.take" [skip]="state.skip" [sort]="state.sort" [sortable]="true"
+    [filterable]="true" [pageable]="pageable" [scrollable]="'none'" (dataStateChange)="dataStateChange($event)" [rowClass]="rowCallback">
+    <ng-template kendoGridToolbarTemplate>
+      <button type="button" kendoGridExcelCommand><span class="k-icon k-i-file-excel"></span>Export to Excel</button>
+      <button kendoGridPDFCommand><span class='k-icon k-i-file-pdf'></span>Export to PDF</button>
+    </ng-template>
     <kendo-grid-column field="taxCode" title="Codice fiscale">
     </kendo-grid-column>
     <kendo-grid-column field="firstName" title="Nome">
@@ -23,7 +15,21 @@
     </kendo-grid-column>
     <kendo-grid-column field="income" title="Reddito dipendente (scostamento)" [class]="{'codeColumn': true}">
     </kendo-grid-column>
-    <kendo-grid-excel fileName="Categories.xlsx" [fetchData]="allData"></kendo-grid-excel>
+    <kendo-grid-excel fileName="EmployeeIncome.xlsx" [fetchData]="allData"></kendo-grid-excel>
+    <kendo-grid-pdf fileName="EployeeIncome.pdf" [allPages]="true" paperSize="A4" [repeatHeaders]="true" [landscape]="true">
+      <kendo-grid-pdf-margin top="2cm" left="1cm" right="1cm" bottom="2cm"></kendo-grid-pdf-margin>
+      <ng-template kendoGridPDFTemplate let-pageNum="pageNum" let-totalPages="totalPages">
+        <div class="page-template">
+          <div class="header">
+            <div style="float: right">Page {{ pageNum }} of {{ totalPages }}</div>
+            Eployee Incomes
+          </div>
+          <div class="footer">
+            Page {{ pageNum }} of {{ totalPages }}
+          </div>
+        </div>
+      </ng-template>
+    </kendo-grid-pdf>
   </kendo-grid>
   <!--<div *ngIf="service.isLoading" class="k-i-loading"></div>-->
 </div>
