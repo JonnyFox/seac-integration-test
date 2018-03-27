@@ -1,6 +1,18 @@
 <div class="grid-wrapper">
-  <kendo-grid id="phanphy" [data]="view | async" [pageSize]="state.take" [skip]="state.skip" [sort]="state.sort" [sortable]="true" [selectable]="true"
-    [filterable]="true" [pageable]="pageable" [scrollable]="'none'" (dataStateChange)="dataStateChange($event)" [rowClass]="rowCallback">
+  <kendo-grid id="phanphy" 
+  [data]="view | async" 
+  [pageSize]="state.take" 
+  [skip]="state.skip" 
+  [sort]="state.sort" 
+  [sortable]="true" 
+  [selectable]="true"
+  [filterable]="true" 
+  [pageable]="pageable" 
+  [scrollable]="'none'" 
+  (dataStateChange)="dataStateChange($event)" 
+  [resizable]="true"
+  [reorderable]="true"
+  [rowClass]="rowCallback">
     <ng-template kendoGridToolbarTemplate>
       <button type="button" kendoGridExcelCommand><span class="k-icon k-i-file-excel"></span>Export to Excel</button>
       <button kendoGridPDFCommand><span class='k-icon k-i-file-pdf'></span>Export to PDF</button>
