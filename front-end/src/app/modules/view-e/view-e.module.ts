@@ -1,4 +1,4 @@
-import { ViewEComponent } from '../../components/view-e/view-e.component';
+import { ViewEComponent } from './view-e.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';

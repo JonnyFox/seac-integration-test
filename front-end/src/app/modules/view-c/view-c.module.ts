@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ViewCComponent } from '../../components/view-c/view-c.component';
+import { ViewCComponent } from './view-c.component';
 import { RouterModule } from '@angular/router';
 import { DataGridComponent } from '../../components/grid/grid.component';
 import { GravitySelectorComponent } from '../../components/gravity-selector/gravity-selector.component';
@@ -27,7 +27,7 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
       ])
   ],
   declarations: [
-    ViewCComponent,        
+    ViewCComponent,
     DataGridComponent,
     GravitySelectorComponent,
     GridDetailsComponent,

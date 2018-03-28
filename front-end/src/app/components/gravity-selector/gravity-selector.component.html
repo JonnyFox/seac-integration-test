@@ -1,5 +1,10 @@
 <div>
   <kendo-numerictextbox [value]="minValue" (valueChange)="minValueChanged($event)"> </kendo-numerictextbox>
+  <input [(colorPicker)]="color" [style.background]="color" (colorPickerChange)="cmykColor=onChangeColor($event);color10=$event"/>
+  <kendo-numerictextbox [value]="maxValue" (valueChange)="maxValueChanged($event)"> </kendo-numerictextbox>
+  <input [(colorPicker)]="color" [style.background]="color" (colorPickerChange)="cmykColor=onChangeColor($event);color10=$event"/>
+  <kendo-numerictextbox [value]="minValue" (valueChange)="minValueChanged($event)"> </kendo-numerictextbox>
+  <input [(colorPicker)]="color" [style.background]="color" (colorPickerChange)="cmykColor=onChangeColor($event);color10=$event"/>
   <kendo-numerictextbox [value]="maxValue" (valueChange)="maxValueChanged($event)"> </kendo-numerictextbox>
   <input [(colorPicker)]="color" [style.background]="color" (colorPickerChange)="cmykColor=onChangeColor($event);color10=$event"/>
 </div>

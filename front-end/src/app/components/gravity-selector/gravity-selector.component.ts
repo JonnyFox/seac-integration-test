@@ -22,9 +22,9 @@ export class GravitySelectorComponent implements OnInit {
     public cmykColor: Cmyk = new Cmyk(0, 0, 0, 0);
     public onChangeColor(color: string): Cmyk {
       const hsva = this.cpService.stringToHsva(color);
-  
+
       const rgba = this.cpService.hsvaToRgba(hsva);
-  
+
       return this.cpService.rgbaToCmyk(rgba);
     }
 
@@ -49,7 +49,7 @@ export class GravitySelectorComponent implements OnInit {
 
     private emitChangeEvent() {
         this.service.setData(<SeverityFilterData>{
-            id: this.selectorId,
+            //id: this.selectorId,
             minValue: this.minValue,
             maxValue: this.maxValue,
             selectedClassInfo: this.selectedItem
