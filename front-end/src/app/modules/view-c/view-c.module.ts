@@ -4,6 +4,7 @@ import { ViewCComponent } from '../../components/view-c/view-c.component';
 import { RouterModule } from '@angular/router';
 import { DataGridComponent } from '../../components/grid/grid.component';
 import { GravitySelectorComponent } from '../../components/gravity-selector/gravity-selector.component';
+import { GridDetailsComponent } from '../../components/grid-details/grid-details.component';
 import { EmployeeIncomeService } from '../../services/employee-income-grid.service';
 import { GravitySelectorService } from '../../services/gravity-selector.service';
 import { ColorPickerModule } from 'ngx-color-picker';
@@ -29,6 +30,7 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
     ViewCComponent,        
     DataGridComponent,
     GravitySelectorComponent,
+    GridDetailsComponent,
   ],
   providers: [
     EmployeeIncomeService,

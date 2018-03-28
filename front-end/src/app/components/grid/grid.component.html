@@ -35,6 +35,7 @@
     <kendo-grid-column field="income" filter="numeric" title="Reddito dipendente (scostamento)" [class]="{'codeColumn': true}"> 
     </kendo-grid-column>
     <ng-template kendoGridDetailTemplate let-dataItem>
+      <!--
       <p><strong>Codice fiscale:</strong> {{dataItem.taxCode}} </p>
       <p><strong>Nome:</strong> {{dataItem.firstName}} </p>
       <p><strong>Cognome:</strong> {{dataItem.lastName}} </p>
@@ -45,6 +46,8 @@
 
       <p><strong>Codice CAAF:</strong> {{dataItem.caafCode}} </p>
       <p><strong>Reddito dipendente (scostamento):</strong>  {{dataItem.income}} € </p>
+      -->
+      <app-grid></app-grid>
   </ng-template>
     <kendo-grid-excel fileName="EmployeeIncome.xlsx" [fetchData]="allData"></kendo-grid-excel>
     <kendo-grid-pdf fileName="EployeeIncome.pdf" [allPages]="true" paperSize="A4" [repeatHeaders]="true" [landscape]="true">
