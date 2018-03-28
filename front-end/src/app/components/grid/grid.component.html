@@ -14,8 +14,14 @@
   [reorderable]="true"
   [rowClass]="rowCallback">
     <ng-template kendoGridToolbarTemplate>
-      <button type="button" kendoGridExcelCommand><span class="k-icon k-i-file-excel"></span>Export to Excel</button>
-      <button kendoGridPDFCommand><span class='k-icon k-i-file-pdf'></span>Export to PDF</button>
+      <div class="container">
+        <app-gravity-selector></app-gravity-selector>
+        <app-gravity-selector></app-gravity-selector>
+        <app-gravity-selector></app-gravity-selector>
+        <app-gravity-selector></app-gravity-selector>
+        <button type="button" kendoGridExcelCommand><span class="k-icon k-i-file-excel"></span>Export to Excel</button>
+        <button kendoGridPDFCommand><span class='k-icon k-i-file-pdf'></span>Export to PDF</button>
+      </div>
     </ng-template>
     <kendo-grid-column field="taxCode" title="Codice fiscale" [headerStyle]="{'text-align': 'right'}">
     </kendo-grid-column>

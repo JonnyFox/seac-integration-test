@@ -49,3 +49,12 @@
   text-align: center;
   color: #888;
 }
+
+.container {
+  display: flex; /* or inline-flex */
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center ;
+}

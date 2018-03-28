@@ -1,32 +1,35 @@
-import { Component, OnInit, EventEmitter, OnChanges, SimpleChanges, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, OnChanges, SimpleChanges, Input, ViewContainerRef } from '@angular/core';
 import { EmployeeIncomeService } from '../../services/employee-income-grid.service';
 import { GravitySelectorService } from '../../services/gravity-selector.service';
+import { ColorPickerService, Cmyk } from 'ngx-color-picker';
 
 @Component({
     selector: 'app-gravity-selector',
-    templateUrl: './gravity-selector.component.html'
+    templateUrl: './gravity-selector.component.html',
+    styleUrls: ['./gravity-selector.component.scss']
 })
 
 export class GravitySelectorComponent implements OnInit {
 
     public selectedItem: SelectedClassInfo = null;
-    public listItems: Array<SelectedClassInfo> = [
-        { text: 'Trascurabile', value: 1, class: 'gravity1' },
-        { text: 'Lieve', value: 2, class: 'gravity2' },
-        { text: 'Consistente', value: 3, class: 'gravity3' },
-        { text: 'Grave', value: 4, class: 'gravity4' }
-    ];
-
-    @Input() selectorId: number = null;
     @Input() minValue: number = null;
     @Input() maxValue: number = null;
 
-    constructor(private gridService: EmployeeIncomeService, private service: GravitySelectorService) { }
+    color = '#ffffff';
+
+    constructor(private gridService: EmployeeIncomeService, private service: GravitySelectorService, public vcRef: ViewContainerRef, private cpService: ColorPickerService) { }
+
+    public cmykColor: Cmyk = new Cmyk(0, 0, 0, 0);
+    public onChangeColor(color: string): Cmyk {
+      const hsva = this.cpService.stringToHsva(color);
+  
+      const rgba = this.cpService.hsvaToRgba(hsva);
+  
+      return this.cpService.rgbaToCmyk(rgba);
+    }
 
     ngOnInit(): void {
-        if (this.selectorId == null) {
-            throw new Error(`selectorId not set as input for component ${GravitySelectorComponent.name}`);
-        }
+           // throw new Error(`selectorId not set as input for component ${GravitySelectorComponent.name}`);
     }
 
     public minValueChanged(changes: number): void {
