@@ -1,10 +1,18 @@
 <div>
-  <kendo-numerictextbox [value]="minValue" (valueChange)="minValueChanged($event)"> </kendo-numerictextbox>
-  <input [(colorPicker)]="color" [style.background]="color" (colorPickerChange)="cmykColor=onChangeColor($event);color10=$event"/>
-  <kendo-numerictextbox [value]="maxValue" (valueChange)="maxValueChanged($event)"> </kendo-numerictextbox>
-  <input [(colorPicker)]="color" [style.background]="color" (colorPickerChange)="cmykColor=onChangeColor($event);color10=$event"/>
-  <kendo-numerictextbox [value]="minValue" (valueChange)="minValueChanged($event)"> </kendo-numerictextbox>
-  <input [(colorPicker)]="color" [style.background]="color" (colorPickerChange)="cmykColor=onChangeColor($event);color10=$event"/>
-  <kendo-numerictextbox [value]="maxValue" (valueChange)="maxValueChanged($event)"> </kendo-numerictextbox>
-  <input [(colorPicker)]="color" [style.background]="color" (colorPickerChange)="cmykColor=onChangeColor($event);color10=$event"/>
+	<kendo-numerictextbox [value]="100" (valueChange)="emitChangeEvent($event)"> </kendo-numerictextbox>
+
+	<input [(colorPicker)]="colors[0]" [style.background]="colors[0]" (colorPickerChange)="emitChangeEvent($event)" />
+
+	<kendo-numerictextbox [value]="500" (valueChange)="emitChangeEvent($event)"> </kendo-numerictextbox>
+
+	<input [(colorPicker)]="colors[1]" [style.background]="colors[1]" (colorPickerChange)="emitChangeEvent($event)" />
+
+	<kendo-numerictextbox [value]="1000" (valueChange)="emitChangeEvent($event)"> </kendo-numerictextbox>
+
+	<input [(colorPicker)]="colors[2]" [style.background]="colors[2]" (colorPickerChange)="emitChangeEvent($event);" />
+
+	<kendo-numerictextbox [value]="2000" (valueChange)="emitChangeEvent($event)"> </kendo-numerictextbox>
+
+	<input [(colorPicker)]="colors[3]" [style.background]="colors[3]" (colorPickerChange)="emitChangeEvent($event);" />
+
 </div>

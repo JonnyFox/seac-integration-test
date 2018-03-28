@@ -1,5 +1,7 @@
+@import "~variables.scss";
+
 .main-content{
-  padding: 1rem;
+  padding: $standard-padding;
 }
 
 nav{

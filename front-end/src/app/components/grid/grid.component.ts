@@ -3,8 +3,8 @@ import { GridDataResult, DataStateChangeEvent, RowClassArgs, PageChangeEvent } f
 import { Observable } from 'rxjs/Observable';
 import { State } from '@progress/kendo-data-query';
 import { EmployeeIncomeService } from '../../services/employee-income-grid.service';
-import { SeverityFilterData } from '../gravity-selector/gravity-selector.component';
 import { GravitySelectorService } from '../../services/gravity-selector.service';
+import { SeverityData } from '../gravity-selector/gravity-selector.component';
 
 @Component({
 	selector: 'app-grid',
@@ -15,7 +15,7 @@ import { GravitySelectorService } from '../../services/gravity-selector.service'
 
 export class DataGridComponent {
 	public view: Observable<GridDataResult>;
-	private severityFilterDataList: Array<SeverityFilterData> = null;
+	private severityData: SeverityData = null;
 
 	public state: State = {
 		skip: 0,
@@ -37,8 +37,8 @@ export class DataGridComponent {
 		return this.service.queryAll(this.state);
 	}
 
-	public onSeverityDataCahanged(data: Array<SeverityFilterData>) {
-		this.severityFilterDataList = data;
+	public onSeverityDataCahanged(data: SeverityData) {
+		this.severityData = data;
 		this.service.localRefresh();
 	}
 
@@ -53,7 +53,12 @@ export class DataGridComponent {
 	}
 
 	public rowCallback = (context: RowClassArgs) => {
-		if (this.severityFilterDataList == null) {
+		document.getElementsByTagName('STYLE').item(3).innerHTML = document.getElementsByTagName('STYLE').item(3).innerHTML.replace('#B2F699', '#FFBA80');
+		return {
+			gravity1: true
+		};
+
+		if (this.severityData == null) {
 			return;
 		}
 
@@ -61,22 +66,13 @@ export class DataGridComponent {
 		//     .filter(i => i != null && i.selectedClassInfo != null)
 		//     .map(i => i.)
 
-		for (const element of this.severityFilterDataList) {
 
-			if (element == null || element.selectedClassInfo == null) {
-				return;
-			}
-
-			const income = context.dataItem.income;
-			if (income < element.maxValue && income > element.minValue) {
-				const colorClass = element.selectedClassInfo.class;
+		/*
 				return {
 					gravity1: colorClass === 'gravity1',
 					gravity2: colorClass === 'gravity2',
 					gravity3: colorClass === 'gravity3',
 					gravity4: colorClass === 'gravity4'
-				};
-			}
-		}
+				};*/
 	}
 }

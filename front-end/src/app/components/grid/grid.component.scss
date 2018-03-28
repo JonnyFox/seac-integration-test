@@ -1,10 +1,11 @@
+@import "~variables.scss";
 // gravity colors
 
 // spaziatura (misure sempre in REM)
 
-
 .grid-wrapper {
   position: relative;
+  padding: $standard-padding;
 }
 .k-i-loading {
   position: absolute;
@@ -57,4 +58,5 @@
   justify-content: center;
   align-items: center;
   align-content: center ;
+  padding: 1rem;
 }
