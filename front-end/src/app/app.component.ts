@@ -1,9 +1,12 @@
-import { Component, SimpleChange } from '@angular/core';
-import { GravitySelectorComponent } from './components/gravity-selector/gravity-selector.component';
+import { Component } from '@angular/core';
 
 @Component({
-	selector: 'app-root',
-	templateUrl: './app.component.html',
-	styleUrls: ['./app.component.scss']
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent { }
+export class AppComponent {
+
+
+    public tst = 19;
+}
