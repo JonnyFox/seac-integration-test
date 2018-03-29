@@ -62,7 +62,7 @@ export class DataGridComponent {
 			return;
 		}
 
-		// this.severityFilterDataList
+		// this.SeverityDataList
 		//     .filter(i => i != null && i.selectedClassInfo != null)
 		//     .map(i => i.)
 

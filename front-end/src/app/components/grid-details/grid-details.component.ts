@@ -4,7 +4,7 @@ import { GridDataResult, DataStateChangeEvent, RowClassArgs, PageChangeEvent } f
 import { Observable } from 'rxjs/Observable';
 import { State } from '@progress/kendo-data-query';
 import { EmployeeIncomeService } from '../../services/employee-income-grid.service';
-import { SeverityFilterData } from '../gravity-selector/gravity-selector.component';
+import { SeverityData } from '../gravity-selector/gravity-selector.component';
 
 @Component({
 	selector: 'app-grid-details',
@@ -15,7 +15,7 @@ import { SeverityFilterData } from '../gravity-selector/gravity-selector.compone
 
 export class GridDetailsComponent {
 	public view: Observable<GridDataResult>;
-	private severityFilterDataList: Array<SeverityFilterData> = null;
+	private SeverityDataList: Array<SeverityData> = null;
 
 	public state: State = {
 		skip: 0,
@@ -38,8 +38,8 @@ export class GridDetailsComponent {
 		return this.service.queryAll(this.state);
 	}
 
-	public onSeverityDataCahanged(data: Array<SeverityFilterData>) {
-		this.severityFilterDataList = data;
+	public onSeverityDataCahanged(data: Array<SeverityData>) {
+		this.SeverityDataList = data;
 		this.service.localRefresh();
 	}
 
@@ -54,11 +54,11 @@ export class GridDetailsComponent {
 	}
 
 	public rowCallback = (context: RowClassArgs) => {
-		if (this.severityFilterDataList == null) {
+		if (this.SeverityDataList == null) {
 			return;
 		}
 
-		for (const element of this.severityFilterDataList) {
+		for (const element of this.SeverityDataList) {
 
 			if (element == null || element.selectedClassInfo == null) {
 				return;
