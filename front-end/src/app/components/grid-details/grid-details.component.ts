@@ -56,7 +56,7 @@ export class GridDetailsComponent {
 	public rowCallback = (context: RowClassArgs) => {
 		if (this.SeverityDataList == null) {
 			return;
-		}
+		}/*
 
 		for (const element of this.SeverityDataList) {
 
@@ -74,6 +74,6 @@ export class GridDetailsComponent {
 					gravity4: colorClass === 'gravity4'
 				};
 			}
-		}
+		}*/
 	}
 }

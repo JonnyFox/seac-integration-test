@@ -22,6 +22,10 @@
 		</kendo-grid-column>
 		<!--<kendo-grid-column field="income" format="{0:c}" title="Reddito dipendente (scostamento)" [class]="{'codeColumn': true}"> -->
 		<kendo-grid-column field="income" filter="numeric" title="Reddito dipendente (scostamento)" [class]="{'codeColumn': true}">
+
+			<ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex" [ngStyle]="a(dataItem)">
+				{{dataItem.income}}
+			</ng-template>
 		</kendo-grid-column>
 		<ng-template kendoGridDetailTemplate let-dataItem>
 			<!--

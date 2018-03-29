@@ -3,7 +3,6 @@ import { GridDataResult, DataStateChangeEvent, RowClassArgs, PageChangeEvent } f
 import { Observable } from 'rxjs/Observable';
 import { State } from '@progress/kendo-data-query';
 import { EmployeeIncomeService } from '../../services/employee-income-grid.service';
-import { GravitySelectorService } from '../../services/gravity-selector.service';
 import { SeverityData } from '../gravity-selector/gravity-selector.component';
 
 @Component({
@@ -26,10 +25,9 @@ export class DataGridComponent {
 		pageSizes: [10, 20, 50]
 	};
 
-	constructor(public service: EmployeeIncomeService, private gravitySelectorService: GravitySelectorService) {
+	constructor(public service: EmployeeIncomeService) {
 		this.view = service;
 		this.service.query(this.state);
-		this.gravitySelectorService.onChanged.subscribe(res => this.onSeverityDataCahanged(res));
 		this.allData = this.allData.bind(this);
 	}
 
@@ -53,26 +51,10 @@ export class DataGridComponent {
 	}
 
 	public rowCallback = (context: RowClassArgs) => {
-		document.getElementsByTagName('STYLE').item(3).innerHTML = document.getElementsByTagName('STYLE').item(3).innerHTML.replace('#B2F699', '#FFBA80');
-		return {
-			gravity1: true
-		};
 
-		if (this.severityData == null) {
-			return;
-		}
-
-		// this.SeverityDataList
-		//     .filter(i => i != null && i.selectedClassInfo != null)
-		//     .map(i => i.)
-
-
-		/*
-				return {
-					gravity1: colorClass === 'gravity1',
-					gravity2: colorClass === 'gravity2',
-					gravity3: colorClass === 'gravity3',
-					gravity4: colorClass === 'gravity4'
-				};*/
+	}
+	public a(element: any) {
+		console.log(element);
 	}
 }
+
