@@ -55,6 +55,7 @@ export class DataGridComponent {
 	}
 	public a(element: any) {
 		console.log(element);
+		return { 'background-color': '#5cc0f9' };
 	}
 }
 
